@@ -5,17 +5,6 @@ import "./EmployeeList.css";
 export const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       "https://vet-api-1.onrender.com/api/employees"
-  //     );
-  //     const data = await response.json();
-  //     setEmployees(data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
