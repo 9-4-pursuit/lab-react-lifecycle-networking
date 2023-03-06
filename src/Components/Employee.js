@@ -7,16 +7,21 @@ export const Employee = ({ employee }) => {
   const [toggle, setToggle] = useState(false);
   const { id, firstName, lastName, prefix, postfix, title } = employee;
 
-  const arrayOfName = [];
-  if (prefix) arrayOfName.push(prefix + " ")
-  arrayOfName.push(firstName + " " + lastName);
-  if (postfix) arrayOfName.push(", " + postfix)
-  const fullName = arrayOfName.join("");
+  // const arrayOfName = [];
+  // if (prefix) arrayOfName.push(prefix + " ")
+  // arrayOfName.push(firstName + " " + lastName);
+  // if (postfix) arrayOfName.push(", " + postfix)
+  // const fullName = arrayOfName.join("");
+  const fullName = `${prefix ? prefix + " " : ""}${firstName} ${lastName}${postfix ? ", " + postfix : ""}`
 
   async function fetchAPI() {
-    const response = await fetch("https://vet-app-0obi.onrender.com/api/pets");
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch("https://vet-app-0obi.onrender.com/api/pets");
+      const data = await response.json();
+      return data;
+    } catch(error) {
+      return console.log("Error fetching API: ", error);
+    }
   }
 
   useEffect(() => {

@@ -6,9 +6,13 @@ export const EmployeeList = () => {
   const [showEmployees, setShowEmployees] = useState([]);
 
   async function fetchAPI() {
-    const response = await fetch("https://vet-app-0obi.onrender.com/api/employees");
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch("https://vet-app-0obi.onrender.com/api/employees");
+      const data = await response.json();
+      return data;
+    } catch(error) {
+      return console.log("Error fetching API: ", error);
+    }
   }
 
   useEffect(() => {
